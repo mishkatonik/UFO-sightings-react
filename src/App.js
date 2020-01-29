@@ -27,7 +27,7 @@ class App extends Component {
   }
 
   componentDidMount = () => {
-    fetch("http://ufo-api.herokuapp.com/api/sightings/search?state=ny")
+    fetch("sightings-by-state.json")
     .then(response => response.json())
     .then(data => {
       console.log(data);
