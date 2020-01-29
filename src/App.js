@@ -27,10 +27,10 @@ class App extends Component {
   }
 
   componentDidMount = () => {
-    fetch("https://ufo-api.herokuapp.com/api/sightings/search?state=ny")
+    fetch("../public/sightings-by-state.json")
     .then(response => response.json())
-    .then(apiData => {
-      console.log(apiData);
+    .then(jsonData => {
+      console.log(jsonData);
     });
   }
 
@@ -39,7 +39,7 @@ class App extends Component {
     .then(response => response.json())
     .then(apiData => {
       console.log(apiData);
-      
+
   }
 
 
