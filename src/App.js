@@ -27,11 +27,19 @@ class App extends Component {
   }
 
   componentDidMount = () => {
-    fetch("http://ufo-api.herokuapp.com/api/sightings/search?state=ny")
+    fetch("https://ufo-api.herokuapp.com/api/sightings/search?state=ny")
     .then(response => response.json())
-    .then(data => {
-      console.log(data);
+    .then(apiData => {
+      console.log(apiData);
     });
+  }
+
+  doFetch = (desiredState) => {
+    fetch("https://ufo-api.herokuapp.com/api/sightings/search?state=" + desiredState)
+    .then(response => response.json())
+    .then(apiData => {
+      console.log(apiData);
+      
   }
 
 
@@ -112,6 +120,13 @@ class App extends Component {
         </div>
 
         <div className="graphContainer">
+{/*          {
+            this.state.apiData.map(datum => (
+              <div class="BarChart-bar" style={{height: datum.percentage + "%"}}>
+                {datum.label}
+              </div>
+            ))
+          }*/}
         </div>
       </div>
     );
