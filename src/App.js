@@ -29,8 +29,11 @@ class App extends Component {
   componentDidMount = () => {
     fetch("sightings-by-state.json")
     .then(response => response.json())
-    .then(data => {
-      console.log(data);
+    .then(jsonData => {
+      console.log(jsonData);
+      this.setState({
+        availableStates: jsonData
+      })
     });
   }
 
@@ -86,6 +89,15 @@ class App extends Component {
 
 
   render() {
+    let updateStates;
+
+      // if (this.state.selectedStates.indexOf(stateInfo) > -1) {
+      //   updateStates = (stateInfo, index) => this.onStateSelect(index)
+      // } else {
+      //   updateStates = (stateInfo, index) => this.removeStateSelect(index)
+      // }
+
+
     return (
       <div>
         <div className="NavBar">
@@ -102,8 +114,11 @@ class App extends Component {
                       type="checkbox" 
                       className="checkboxItem"
                       value={stateInfo.state}
-                      onClick={
-                        () => this.onStateSelect(index)
+                      onClick={() => {
+                        this.state.selectedStates.indexOf(stateInfo) > -1
+                          ? this.removeStateSelect(index)
+                          : this.onStateSelect(index)
+                        }
                       } />
                     {stateInfo.state}
                   </label>
