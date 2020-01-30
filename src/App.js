@@ -82,7 +82,6 @@ class App extends Component {
         
     // update state and re-render
     this.setState({
-      availableStates: availableStates,
       selectedStates: selectedStates,
     });
   }
@@ -127,6 +126,15 @@ class App extends Component {
         </div>
 
         <div className="graphContainer">
+          
+          {
+            this.state.selectedStates.map(stateInfo => (
+              <div className="Bar" style={{height: (stateInfo.sightings/100) + "%"}}>
+                {stateInfo.state}
+              </div>
+            ))
+          }
+
         </div>
       </div>
     );
