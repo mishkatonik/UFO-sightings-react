@@ -80,9 +80,10 @@ body {
 .graphContainer {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: repeat(5, 1fr);
-  grid-column-gap: 25px;
+  grid-template-rows: 1fr;
+  grid-column-gap: 1fr;
   height: 400px;
+  max-width: 1000px;
   background-color: var(--bg-color);
   margin-left: var(--page-spacing);
   margin-right: var(--page-spacing);
@@ -94,7 +95,7 @@ body {
 }
 
 .Bar {
-  grid-row: 1 / span 5;
+  grid-row: 1;
   box-sizing: border-box;
   padding: var(--bar-spacing);
   margin-left: var(--bar-spacing);
@@ -106,6 +107,7 @@ body {
     font-family: var(--font-text);
   color: black;
   font-family: var(--font-text);
+  font-size: 1fr;
   transition-duration: 0.4s; 
 }
 
