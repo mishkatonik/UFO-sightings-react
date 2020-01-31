@@ -44,8 +44,6 @@ class App extends Component {
 
   }
 
-
-// modified from quiditch activity, 4.1 activity 1
   onStateSelect = (index) => {
     console.log('getting state selection...');
 
@@ -98,15 +96,6 @@ class App extends Component {
   }
 
 
-  // calcBarHeight = (index) => {
-  //   const maxSightings = Math.max(...this.state.selectedStates.map(o => o.sightings), 0);  
-  //     //default 0 if empty, might break fraction?
-  //   console.log("highest sightings: ", maxSightings);
-
-  //   const barHeight = this.state.selectedStates[index].sightings;
-
-  //   return barHeight
-  // }
 
 
   render() {
@@ -144,7 +133,7 @@ class App extends Component {
           {
             this.state.selectedStates.map(stateInfo => (
               <div className="Bar" style={{height: (stateInfo.sightings/10) + "px"}}>
-                {stateInfo.state}
+                {stateInfo.state} - {stateInfo.sightings}
               </div>
             ))
           }
