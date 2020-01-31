@@ -37,7 +37,6 @@ class App extends Component {
 
 
 
-// modified from quiditch activity, 4.1 activity 1
   onStateSelect = (index) => {
     console.log('getting state selection...');
 
@@ -74,6 +73,7 @@ class App extends Component {
     const availableStates = this.state.availableStates.slice();
     const selectedStates = this.state.selectedStates.slice();
     
+    // find index of the desiredState to pass later
     const selectedIndex = selectedStates.findIndex(stateInfo => stateInfo.state === availableStates[index].state);
 
     //indicate which state is being removed
@@ -89,16 +89,6 @@ class App extends Component {
     });
   }
 
-
-  // calcBarHeight = (index) => {
-  //   const maxSightings = Math.max(...this.state.selectedStates.map(o => o.sightings), 0);  
-  //     //default 0 if empty, might break fraction?
-  //   console.log("highest sightings: ", maxSightings);
-
-  //   const barHeight = this.state.selectedStates[index].sightings;
-
-  //   return barHeight
-  // }
 
 
   render() {
@@ -135,8 +125,8 @@ class App extends Component {
           
           {
             this.state.selectedStates.map(stateInfo => (
-              <div className="Bar" style={{height: (stateInfo.sightings/10) + "px"}}>
-                {stateInfo.state}
+              <div className="Bar" style={{height: (stateInfo.sightings/21) + "px"}}>
+                {stateInfo.state} - {stateInfo.sightings}
               </div>
             ))
           }
