@@ -25,6 +25,7 @@ class App extends Component {
   }
 
   componentDidMount = () => {
+// <<<<<<< HEAD
     fetch("sightings-by-state.json")
     .then(response => response.json())
     .then(jsonData => {
@@ -33,6 +34,14 @@ class App extends Component {
         availableStates: jsonData
       })
     });
+  }
+
+  doFetch = (desiredState) => {
+    fetch("https://ufo-api.herokuapp.com/api/sightings/search?state=" + desiredState)
+    .then(response => response.json())
+    .then(apiData => {
+      console.log(apiData);
+
   }
 
 
@@ -139,7 +148,6 @@ class App extends Component {
               </div>
             ))
           }
-
         </div>
       </div>
     );
