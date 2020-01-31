@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-// fetch JSON data and hold it in this const, then put it in the state below
-// const availableStates = 
 
 
 class App extends Component {
@@ -45,7 +43,7 @@ class App extends Component {
     // copy both arrays for manipulation
     const availableStates = this.state.availableStates.slice();
     const selectedStates = this.state.selectedStates.slice();
-    
+
     //indicate which state is being selected
     const desiredState = this.state.availableStates[index];
 
@@ -67,6 +65,7 @@ class App extends Component {
     } 
   }
 
+
   removeStateSelect = (index) => {
     console.log('removing state from selection...')
 
@@ -74,29 +73,35 @@ class App extends Component {
     const availableStates = this.state.availableStates.slice();
     const selectedStates = this.state.selectedStates.slice();
     
+    const selectedIndex = selectedStates.findIndex(stateInfo => stateInfo.state === availableStates[index].state);
+
     //indicate which state is being removed
     const desiredState = this.state.availableStates[index];
     
     //remove the state from selected
-    selectedStates.splice(index, 1);
+    selectedStates.splice(selectedIndex, 1);
         
     // update state and re-render
     this.setState({
+      availableStates: availableStates,
       selectedStates: selectedStates,
     });
   }
 
 
+  // calcBarHeight = (index) => {
+  //   const maxSightings = Math.max(...this.state.selectedStates.map(o => o.sightings), 0);  
+  //     //default 0 if empty, might break fraction?
+  //   console.log("highest sightings: ", maxSightings);
+
+  //   const barHeight = this.state.selectedStates[index].sightings;
+
+  //   return barHeight
+  // }
+
+
   render() {
-    let updateStates;
-
-      // if (this.state.selectedStates.indexOf(stateInfo) > -1) {
-      //   updateStates = (stateInfo, index) => this.onStateSelect(index)
-      // } else {
-      //   updateStates = (stateInfo, index) => this.removeStateSelect(index)
-      // }
-
-
+    
     return (
       <div>
         <div className="NavBar">
@@ -114,7 +119,7 @@ class App extends Component {
                       className="checkboxItem"
                       value={stateInfo.state}
                       onClick={() => {
-                        this.state.selectedStates.indexOf(stateInfo) > -1
+                        this.state.selectedStates.indexOf(stateInfo) > -1 
                           ? this.removeStateSelect(index)
                           : this.onStateSelect(index)
                         }
@@ -129,7 +134,7 @@ class App extends Component {
           
           {
             this.state.selectedStates.map(stateInfo => (
-              <div className="Bar" style={{height: (stateInfo.sightings/100) + "%"}}>
+              <div className="Bar" style={{height: (stateInfo.sightings/10) + "px"}}>
                 {stateInfo.state}
               </div>
             ))
@@ -142,10 +147,3 @@ class App extends Component {
 }
 
 export default App;
-
-
-
-// check if an item exists in an array:
-
-// var arr = ["steve", "bob", "john"];
-// console.log(arr.indexOf("bob") > -1);    ----> returns true
